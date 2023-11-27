@@ -25,7 +25,7 @@ public:
 	Player* readPlayer()
 	{
 		std::ifstream in(pathDir + "\\player.txt");
-		if (!in) {
+		if (!in.is_open()) {
 			std::cout << "there is no player.txt file\n";
 			return nullptr;
 		}
@@ -47,13 +47,14 @@ public:
 				break;
 			}
 		}
+		in.close();
 		return new Player(chars, lims, Pos(def_pos));
 	}
 
 	Field* readField(Player* player) {
-		std::ifstream in(pathDir + "\\visuals.txt");
-		if (!in) {
-			std::cout << "there is no visuals.txt file\n";
+		std::ifstream in(pathDir + "\\field.txt");
+		if (!in.is_open()) {
+			std::cout << "there is no field.txt file\n";
 			return nullptr;
 		}
 		std::string str;
@@ -89,7 +90,7 @@ public:
 		}
 
 		int c = 0;
-		int telep_c = 0, dmg_c = 0, heal_c = 0, score_c = 0;
+		uint32_t telep_c = 0, dmg_c = 0, heal_c = 0, score_c = 0;
 		while (std::getline(in, str)) {
 			if (str.empty()) break;
 			for (size_t i = 0; i < str.size() / 2; i++) {
@@ -124,91 +125,96 @@ public:
 			}
 			++c;
 		}
+		in.close();
 		return field;
 	}
 
 	std::map<Symbols, char>* readSimbols() {
+		// make check if not all visuals is set, use def values
 		std::ifstream in(pathDir + "\\visuals.txt");
-		if (!in) {
+		if (!in.is_open()) {
 			std::cout << "there is no visuals.txt file\n";
 			return nullptr;
 		}
 
 		std::string str;
-		std::map<Symbols, char> m;
+		std::map<Symbols, char>* m = new std::map<Symbols, char>;
 		while (std::getline(in, str)) {
 			if ((str == "Damage") && (std::getline(in, str))) {
-				m[Symbols::Damage] = str[0];
+				(*m)[Symbols::Damage] = str[0];
 				continue;
 			}
 			if ((str == "Heal") && (std::getline(in, str))) {
-				m[Symbols::Heal] = str[0];
+				(*m)[Symbols::Heal] = str[0];
 				continue;
 			}
 			if ((str == "Score") && (std::getline(in, str))) {
-				m[Symbols::Score] = str[0];
+				(*m)[Symbols::Score] = str[0];
 				continue;
 			}
 			if ((str == "Teleport") && (std::getline(in, str))) {
-				m[Symbols::Teleport] = str[0];
+				(*m)[Symbols::Teleport] = str[0];
 				continue;
 			}
 			if ((str == "Empty") && (std::getline(in, str))) {
-				m[Symbols::Empty] = str[0];
+				(*m)[Symbols::Empty] = str[0];
 				continue;
 			}
 			if ((str == "Player") && (std::getline(in, str))) {
-				m[Symbols::Player] = str[0];
+				(*m)[Symbols::Player] = str[0];
 				continue;
 			}
 			if ((str == "Start") && (std::getline(in, str))) {
-				m[Symbols::Start] = str[0];
+				(*m)[Symbols::Start] = str[0];
 				continue;
 			}
 			if ((str == "Finish") && (std::getline(in, str))) {
-				m[Symbols::Finish] = str[0];
+				(*m)[Symbols::Finish] = str[0];
 				continue;
 			}
 			if ((str == "Impassable") && (std::getline(in, str))) {
-				m[Symbols::Impassable] = str[0];
+				(*m)[Symbols::Impassable] = str[0];
 				continue;
 			}
 		}
-		return &m;
+		in.close();
+		return m;
 	}
 
 	std::map<int, Controlls>* readControlSymbols() {
-		std::ifstream in(pathDir + "\\visuals.txt");
-		if (!in) {
-			std::cout << "there is no visuals.txt file\n";
+		// make check if not all controls is set
+		std::ifstream in(pathDir + "\\controls.txt");
+		if (!in.is_open()) {
+			std::cout << "there is no controls.txt file\n";
 			return nullptr;
 		}
 
 		std::string str;
-		std::map<int, Controlls> m;
+		std::map<int, Controlls>* m = new std::map<int, Controlls>;
 		while (std::getline(in, str)) {
 			if ((str == "up") && (std::getline(in, str))) {
-				m[std::atoi(str.c_str())] = Controlls::up;
+				(*m)[std::atoi(str.c_str())] = Controlls::up;
 				continue;
 			}
 			if ((str == "down") && (std::getline(in, str))) {
-				m[std::atoi(str.c_str())] = Controlls::down;
+				(*m)[std::atoi(str.c_str())] = Controlls::down;
 				continue;
 			}
 			if ((str == "right") && (std::getline(in, str))) {
-				m[std::atoi(str.c_str())] = Controlls::right;
+				(*m)[std::atoi(str.c_str())] = Controlls::right;
 				continue;
 			}
 			if ((str == "left") && (std::getline(in, str))) {
-				m[std::atoi(str.c_str())] = Controlls::left;
+				(*m)[std::atoi(str.c_str())] = Controlls::left;
 				continue;
 			}
 			if ((str == "menu") && (std::getline(in, str))) {
-				m[std::atoi(str.c_str())] = Controlls::menu;
+				(*m)[std::atoi(str.c_str())] = Controlls::menu;
 				continue;
 			}
 		}
-		return &m;
+		in.close();
+		return m;
 	}
 
 private:
@@ -234,6 +240,10 @@ private:
 			y = std::stoi(str.substr(p), &p);
 			vec.push_back({ x, y });
 		}
+	}
+
+	void setDefControls(std::map<int, Controlls>* m) {
+		// pass
 	}
 };
 

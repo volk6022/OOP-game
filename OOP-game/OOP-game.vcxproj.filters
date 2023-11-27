@@ -83,6 +83,9 @@
     <ClInclude Include="Player.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>GameClasses</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lecture1.cpp">
@@ -136,5 +139,14 @@
     <ClCompile Include="lb1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="timer.cpp">
+      <Filter>GameClasses</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="lvls\lvl1\controls.txt" />
+    <Text Include="lvls\lvl1\field.txt" />
+    <Text Include="lvls\lvl1\player.txt" />
+    <Text Include="lvls\lvl1\visuals.txt" />
   </ItemGroup>
 </Project>

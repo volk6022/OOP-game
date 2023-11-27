@@ -6,7 +6,7 @@
 #include <vector>
 #include <conio.h>
 
-#define LVL_DIR "/OOP/OOP/lvls"
+#define LVL_DIR "..\\OOP-game\\lvls"
 #define QUIT "\0"
 
 class Menu
@@ -21,7 +21,7 @@ public:
 			std::string e;
 			return e;
 		}
-		if (ch != 's') {
+		if (ch != 'l') {
 			goto start;
 		}
 		std::vector <std::string> lst;
@@ -29,13 +29,12 @@ public:
 		std::cout << "available lvls\n";
 		for (const auto& entry : std::filesystem::directory_iterator(LVL_DIR)) {
 			// remake if{} - it must check for dir and for files in it
-			if (std::filesystem::is_character_file(entry)) {
+			if (std::filesystem::is_directory(entry)) {
 				lst.push_back(entry.path().string());
 				std::cout << counter << ": " << lst.back() << '\n';
 				++counter;
 			}
 		}
-		std::cout << counter << "default lvl\n";
 
 		if (lst.size() == 0) {
 			std::cout << "looks like you have no lvls yet\n";

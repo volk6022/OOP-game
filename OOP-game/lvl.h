@@ -24,26 +24,27 @@ private:
 	Visualise* v;
 	std::map<int, Controlls>* crls;
 	std::map<Symbols, char>* visuals;
+	long long frameRate;
 public:
-	lvl(std::string path)
-		: player(nullptr), field(nullptr), contr(nullptr), pi(nullptr), v(nullptr), crls(nullptr), visuals(nullptr)
+	lvl(std::string path, long long frameRate)
+		: player(nullptr), field(nullptr), contr(nullptr), pi(nullptr), v(nullptr), crls(nullptr), visuals(nullptr), frameRate(frameRate)
 	{
 		Generator g(path);
 		try {
 			player = g.readPlayer();
-			if (!player) {
+			if (player == nullptr) {
 				throw "Unable to read player.txt\n";
 			}
 			field = g.readField(player);
-			if (!field) {
+			if (field == nullptr) {
 				throw "Unable to read field.txt\n";
 			}
 			crls = g.readControlSymbols();
-			if (!crls) {
+			if (crls == nullptr) {
 				throw "Unable to read crls.txt\n";
 			}
 			visuals = g.readSimbols();
-			if (!visuals) {
+			if (visuals == nullptr) {
 				throw "Unable to read visuals.txt\n";
 			}
 			player->set_position(field->get_start());
@@ -55,17 +56,19 @@ public:
 		}
 		if ((player != nullptr) && (field != nullptr) && (crls != nullptr) && (visuals != nullptr)) {
 			contr = new Controller(player, field);
-			pi = new PlyerInput(crls);
+			pi = new PlyerInput(*crls, frameRate);
 			v = new Visualise(player, field, visuals);
 		}
 	}
 
 	void start() {
 		if ((player == nullptr) || (field == nullptr) || (crls == nullptr) || (visuals == nullptr)) return;
-
+		v->printField();
 		contr->MovePlayer(pi->action());
+		v->printField();
 		while (!contr->EndGame()) {
 			contr->MovePlayer(pi->action());
+			v->printField();
 		}
 		if (contr->get_win()) {
 			v->Win(contr->getSteps());

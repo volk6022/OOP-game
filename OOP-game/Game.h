@@ -8,16 +8,17 @@
 
 class Game
 {
+public:
 	Game() {}
-
 	void StartGame() {
 		Menu m;
 		std::string path = m.MainMenu();
+		lvl* l;
 		while (!path.empty()) {
 			// create new lvl and start it
-			lvl l(path);
-			l.start();
-			l.~lvl();
+			l = new lvl(path, 200);
+			l->start();
+			l->~lvl();
 			path = m.MainMenu();
 		}
 	}

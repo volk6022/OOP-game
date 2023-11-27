@@ -1,4 +1,5 @@
 #include "Cell.h"
+#include "EventSystem.h"
 
 #define def_movable true
 #define def_event nullptr
@@ -50,8 +51,8 @@ Cell& Cell::operator=(Cell&& other) noexcept {
 }
 
 void Cell::clear() {
-	if (eventInt)
-		delete eventInt;
+	if (eventInt != nullptr)
+		this->eventInt->~Event();
 }
 
 Cell::~Cell() {

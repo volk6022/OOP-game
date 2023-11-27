@@ -46,8 +46,7 @@ public:
                 std::cout << '\n';
             }
         std::cout << "\nhealth:" << player->get_charact(Characts::HEALTH).value
-           << "\nscore:" << player->get_charact(Characts::SCORE).value
-           << "\nposition:" << player->get_position().x << ' ' << player->get_position().y << '\n';
+           << "\nscore:" << player->get_charact(Characts::SCORE).value << '\n';
     }
 
     void GameOver(int steps) {
@@ -57,10 +56,6 @@ public:
 
     void Win(int steps) {
         std::cout << "You Win!\n" << "Your score:" << player->get_charact(Characts::SCORE).value << '\n' << "Your steps: " << steps << '\n';
-    }
-
-    void ReadingErrorMessage(std::string name) {
-        std::cout << "Reading file error, file: " << name << '\n';
     }
 };
 
