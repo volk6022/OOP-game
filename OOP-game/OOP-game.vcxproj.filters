@@ -18,6 +18,15 @@
     <Filter Include="GameObjects">
       <UniqueIdentifier>{efb72bb0-3563-4d03-9333-be047712bae9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Messages">
+      <UniqueIdentifier>{6a21a08a-5880-4143-b7f2-25d0de35278c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameClasses\Input">
+      <UniqueIdentifier>{35e13625-7035-4e06-8564-d2d071ff88fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameClasses\Visual">
+      <UniqueIdentifier>{ca8f5d82-770b-4958-a743-a8765eec92a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TeleportEvent.h">
@@ -38,25 +47,10 @@
     <ClInclude Include="BasicEvent.h">
       <Filter>EventSystem</Filter>
     </ClInclude>
-    <ClInclude Include="Visualise.h">
-      <Filter>GameClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerInput.h">
-      <Filter>GameClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>GameClasses</Filter>
-    </ClInclude>
     <ClInclude Include="lvl.h">
       <Filter>GameClasses</Filter>
     </ClInclude>
     <ClInclude Include="Generator.h">
-      <Filter>GameClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="Controller.h">
-      <Filter>GameClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="Controlls.h">
       <Filter>GameClasses</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
@@ -83,8 +77,47 @@
     <ClInclude Include="Player.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>GameClasses\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Controlls.h">
+      <Filter>GameClasses\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="I_PlayerInput.h">
+      <Filter>GameClasses\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerInput.h">
+      <Filter>GameClasses\Input</Filter>
+    </ClInclude>
     <ClInclude Include="timer.h">
-      <Filter>GameClasses</Filter>
+      <Filter>GameClasses\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="I_Visualise.h">
+      <Filter>GameClasses\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>GameClasses\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="Visualise.h">
+      <Filter>GameClasses\Visual</Filter>
+    </ClInclude>
+    <ClInclude Include="I_Message.h">
+      <Filter>Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="InputCmdMSG.h">
+      <Filter>Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="InputNoCmdMSG.h">
+      <Filter>Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="LoseMSG.h">
+      <Filter>Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="NewGameMSG.h">
+      <Filter>Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="WinMSG.h">
+      <Filter>Messages</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -103,22 +136,10 @@
     <ClCompile Include="TeleportEvent.cpp">
       <Filter>EventSystem</Filter>
     </ClCompile>
-    <ClCompile Include="Controller.cpp">
-      <Filter>GameClasses</Filter>
-    </ClCompile>
     <ClCompile Include="Generator.cpp">
       <Filter>GameClasses</Filter>
     </ClCompile>
     <ClCompile Include="lvl.cpp">
-      <Filter>GameClasses</Filter>
-    </ClCompile>
-    <ClCompile Include="Visualise.cpp">
-      <Filter>GameClasses</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerInput.cpp">
-      <Filter>GameClasses</Filter>
-    </ClCompile>
-    <ClCompile Include="Menu.cpp">
       <Filter>GameClasses</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
@@ -139,8 +160,38 @@
     <ClCompile Include="lb1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>GameClasses\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerInput.cpp">
+      <Filter>GameClasses\Input</Filter>
+    </ClCompile>
     <ClCompile Include="timer.cpp">
-      <Filter>GameClasses</Filter>
+      <Filter>GameClasses\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>GameClasses\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="Visualise.cpp">
+      <Filter>GameClasses\Visual</Filter>
+    </ClCompile>
+    <ClCompile Include="I_Message.cpp">
+      <Filter>Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="InputCmdMSG.cpp">
+      <Filter>Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="InputNoCmdMSG.cpp">
+      <Filter>Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="LoseMSG.cpp">
+      <Filter>Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="NewGameMSG.cpp">
+      <Filter>Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMSG.cpp">
+      <Filter>Messages</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

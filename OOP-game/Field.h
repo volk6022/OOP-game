@@ -13,6 +13,8 @@ private:
 
 	void clear();
 public:
+	Field() {}
+
 	Field(int x, int y, Pos start, Pos stop);
 
 	Field(const Field& f);

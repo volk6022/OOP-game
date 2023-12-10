@@ -39,6 +39,8 @@ private:
 
 	void clear();
 public:
+	Player() {}
+
 	Player(std::vector<def_value_type> characts, std::vector<def_value_type> Limits, Pos position);
 
 	Charact get_charact(Characts c);

@@ -16,6 +16,8 @@ private:
 	void SetEndGame();
 
 public:
+	Controller() {}
+
 	Controller(Player *player, Field *field);
 
 	void MovePlayer(Controlls direction);

@@ -118,6 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,8 +155,15 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Generator.h" />
     <ClInclude Include="HealEvent.h" />
+    <ClInclude Include="InputCmdMSG.h" />
+    <ClInclude Include="InputNoCmdMSG.h" />
+    <ClInclude Include="I_Message.h" />
+    <ClInclude Include="I_PlayerInput.h" />
+    <ClInclude Include="I_Visualise.h" />
+    <ClInclude Include="LoseMSG.h" />
     <ClInclude Include="lvl.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="NewGameMSG.h" />
     <ClInclude Include="ObjectPosition.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerInput.h" />
@@ -163,6 +171,7 @@
     <ClInclude Include="TeleportEvent.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="Visualise.h" />
+    <ClInclude Include="WinMSG.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
@@ -173,16 +182,22 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="HealEvent.cpp" />
+    <ClCompile Include="InputCmdMSG.cpp" />
+    <ClCompile Include="InputNoCmdMSG.cpp" />
+    <ClCompile Include="I_Message.cpp" />
     <ClCompile Include="lb1.cpp" />
     <ClCompile Include="lecture1.cpp" />
+    <ClCompile Include="LoseMSG.cpp" />
     <ClCompile Include="lvl.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="NewGameMSG.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerInput.cpp" />
     <ClCompile Include="ScoreEvent.cpp" />
     <ClCompile Include="TeleportEvent.cpp" />
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="Visualise.cpp" />
+    <ClCompile Include="WinMSG.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="lvls\lvl1\controls.txt" />
