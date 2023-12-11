@@ -4,6 +4,10 @@
 
 #include "Visualise.h"
 #include "PlayerInput.h"
+#include "InputCmdMSG.h"
+#include "LoseMSG.h"
+#include "NewGameMSG.h"
+#include "WinMSG.h"
 
 
 lvl::lvl(std::string path, long long frameRate) : frameRate(frameRate)
@@ -40,26 +44,49 @@ lvl::lvl(std::string path, long long frameRate) : frameRate(frameRate)
 	contr = Controller(&player, &field);
 	pi = dynamic_cast<I_PlayerInput*>(new PlayerInput(crls, frameRate));
 	vis = dynamic_cast<I_Visualise*>(new Visualise(player, field, visuals));
+	std::string str = path;
+	str.append("\\log.txt");
+	out_stream.open(str);
+	output = new MessageOutput(out_stream);
 }
 
 void lvl::start() {
+	I_Message* msg = new NewGameMSG(field);
+	output->writeLog(msg);
 	vis->printField();
-	contr.MovePlayer(pi->action());
+	Controlls cmd = pi->action();
+	contr.MovePlayer(cmd);
 	vis->printField();
+	delete msg;
+	msg = new InputCmdMSG(crls, cmd);
+	output->writeLog(msg);
 	while (!contr.EndGame()) {
-		contr.MovePlayer(pi->action());
+		cmd = pi->action();
+		contr.MovePlayer(cmd);
 		vis->printField();
+		delete msg;
+		msg = new InputCmdMSG(crls, cmd);
+		output->writeLog(msg);
 	}
 	if (contr.get_win()) {
 		vis->Win(contr.getSteps());
+		delete msg;
+		msg = new WinMSG(player);
+		output->writeLog(msg);
 	}
 	else {
 		vis->GameOver(contr.getSteps());
+		delete msg;
+		msg = new LoseMSG(player);
+		output->writeLog(msg);
 	}
 	system("pause");
 }
 
 
 lvl::~lvl() {
+	out_stream.close();
+	delete pi;
 	delete vis;
+	delete output;
 }

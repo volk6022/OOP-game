@@ -4,7 +4,6 @@
 
 #include "Controlls.h"
 
-#include <string>
 #include <map>
 
 class InputCmdMSG : public I_Message

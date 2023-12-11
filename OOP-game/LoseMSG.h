@@ -6,7 +6,7 @@
 class LoseMSG : public I_Message
 {
 private:
-	Pos postion;
+	Pos position;
 public:
 	LoseMSG(Player& player);
 

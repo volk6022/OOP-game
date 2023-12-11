@@ -7,7 +7,7 @@
 class WinMSG : public I_Message
 {
 private:
-	std::vector<Characts> chars;
+	std::vector<Charact> characts;
 public:
 	// get all characts
 	WinMSG(Player& player);

@@ -4,7 +4,6 @@
 #include "Player.h"
 #include "Field.h"
 
-#include <string>
 
 class NewGameMSG : public I_Message
 {
@@ -12,7 +11,7 @@ private:
 	Pos fieldShape;
 	Pos PlayerPosition;
 public:
-	NewGameMSG(Player& player, Field& filed);
+	NewGameMSG(Field& field);
 
 	std::string PackMSG() override;
 };

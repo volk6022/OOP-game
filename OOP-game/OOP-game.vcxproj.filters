@@ -107,9 +107,6 @@
     <ClInclude Include="InputCmdMSG.h">
       <Filter>Messages</Filter>
     </ClInclude>
-    <ClInclude Include="InputNoCmdMSG.h">
-      <Filter>Messages</Filter>
-    </ClInclude>
     <ClInclude Include="LoseMSG.h">
       <Filter>Messages</Filter>
     </ClInclude>
@@ -117,6 +114,9 @@
       <Filter>Messages</Filter>
     </ClInclude>
     <ClInclude Include="WinMSG.h">
+      <Filter>Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageOutput.h">
       <Filter>Messages</Filter>
     </ClInclude>
   </ItemGroup>
@@ -175,13 +175,7 @@
     <ClCompile Include="Visualise.cpp">
       <Filter>GameClasses\Visual</Filter>
     </ClCompile>
-    <ClCompile Include="I_Message.cpp">
-      <Filter>Messages</Filter>
-    </ClCompile>
     <ClCompile Include="InputCmdMSG.cpp">
-      <Filter>Messages</Filter>
-    </ClCompile>
-    <ClCompile Include="InputNoCmdMSG.cpp">
       <Filter>Messages</Filter>
     </ClCompile>
     <ClCompile Include="LoseMSG.cpp">
@@ -191,6 +185,9 @@
       <Filter>Messages</Filter>
     </ClCompile>
     <ClCompile Include="WinMSG.cpp">
+      <Filter>Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageOutput.cpp">
       <Filter>Messages</Filter>
     </ClCompile>
   </ItemGroup>

@@ -65,4 +65,12 @@ public:
 	using GameObject::set_position;
 	using GameObject::get_visible;
 	using GameObject::set_visible;
+
+	std::vector<Charact> get_CR_List() {
+		return CharactsList;
+	}
+
+	std::vector<Charact> get_CR_Limit() {
+		return CharactsLimits;
+	}
 };
